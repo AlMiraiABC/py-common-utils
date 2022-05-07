@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "setup check",
+            "command": "python",
+            "args": [
+                "setup.py",
+                "check"
+            ],
+            "type": "shell"
+        },
+        {
+            "label": "setup build",
+            "command": "python",
+            "args": [
+                "setup.py",
+                "build"
+            ],
+            "type": "shell"
+        },
+        {
+            "label": "setup pack",
+            "command": "python",
+            "args": [
+                "setup.py",
+                "sdist"
+            ],
+            "type": "shell"
+        },
+        {
+            "label": "setup clean",
+            "type": "shell",
+            "linux":{
+                "command": "rm -rf build dist src/*.egg-info"
+            },
+            "windows":{
+                // https://superuser.com/a/764355
+                "command": "rmdir /s /q build dist && for /d %G in (\"src\\*.egg-info\") do rd /s /q \"%~G\""
+            }
+        }
+    ]
+}

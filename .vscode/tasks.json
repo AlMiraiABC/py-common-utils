@@ -38,6 +38,30 @@
                 // https://superuser.com/a/764355
                 "command": "rmdir /s /q build dist && for /d %G in (\"src\\*.egg-info\") do rd /s /q \"%~G\""
             }
+        },
+        {
+            "label": "twine upload testpypi",
+            "type": "shell",
+            "command":"python",
+            "args": [
+                "-m",
+                "twine",
+                "upload",
+                "-r",
+                "testpypi",
+                "dist/*"
+            ]
+        },
+        {
+            "label": "twine upload pypi",
+            "type": "shell",
+            "command":"python",
+            "args": [
+                "-m",
+                "twine",
+                "upload",
+                "dist/*"
+            ]
         }
     ]
 }
